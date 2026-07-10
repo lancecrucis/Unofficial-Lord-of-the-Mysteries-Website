@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { db } from "../firebase";
+import { containsBannedWord } from "../utils/filterText";
 import {
   collection,
   addDoc,
@@ -21,7 +22,7 @@ function IWasHere() {
   const [nameInput, setNameInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [allNames, setAllNames] = useState([]);
-  
+  const [submitError, setSubmitError] = useState(null);
   // This array will hold the unique floating name objects
   const [floatingNames, setFloatingNames] = useState([]);
   const slotIdRef = useRef(0);
@@ -100,42 +101,46 @@ function IWasHere() {
 
   // 3. Handle Input Submission
   async function handleSubmit(e) {
-    e.preventDefault();
-    const trimmed = nameInput.trim();
-    if (!trimmed || trimmed.length > 30) return;
+  e.preventDefault();
+  const trimmed = nameInput.trim();
+  if (!trimmed || trimmed.length > 15) return;
 
-    setSubmitting(true);
-    try {
-      await addDoc(collection(db, "visitors"), {
-        name: trimmed,
-        timestamp: serverTimestamp(),
-      });
-
-      // Optimistically force the user's newly inputted name straight onto the screen immediately
-      setFloatingNames((prev) => {
-        const isAlreadyFloating = prev.some((f) => f.name.toLowerCase() === trimmed.toLowerCase());
-        if (isAlreadyFloating) return prev; // Don't duplicate if it's already up there
-
-        const newInstance = createFloatingInstance(trimmed);
-        
-        if (prev.length >= MAX_VISIBLE) {
-          // Drop a random old one to make space for the new user input
-          const updated = [...prev];
-          const targetIndex = Math.floor(Math.random() * updated.length);
-          updated[targetIndex] = newInstance;
-          return updated;
-        } else {
-          return [...prev, newInstance];
-        }
-      });
-
-      setNameInput("");
-    } catch (err) {
-      console.error("Failed to submit name:", err);
-    } finally {
-      setSubmitting(false);
-    }
+  if (containsBannedWord(trimmed)) {
+    setSubmitError("That name isn't allowed here. Try another.");
+    return;
   }
+  setSubmitError(null);
+
+  setSubmitting(true);
+  try {
+    await addDoc(collection(db, "visitors"), {
+      name: trimmed,
+      timestamp: serverTimestamp(),
+    });
+
+    setFloatingNames((prev) => {
+      const isAlreadyFloating = prev.some((f) => f.name.toLowerCase() === trimmed.toLowerCase());
+      if (isAlreadyFloating) return prev;
+
+      const newInstance = createFloatingInstance(trimmed);
+
+      if (prev.length >= MAX_VISIBLE) {
+        const updated = [...prev];
+        const targetIndex = Math.floor(Math.random() * updated.length);
+        updated[targetIndex] = newInstance;
+        return updated;
+      } else {
+        return [...prev, newInstance];
+      }
+    });
+
+    setNameInput("");
+  } catch (err) {
+    console.error("Failed to submit name:", err);
+  } finally {
+    setSubmitting(false);
+  }
+}
 
   return (
     <section
@@ -193,7 +198,7 @@ function IWasHere() {
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
             placeholder="Your name..."
-            maxLength={30}
+            maxLength={15}
             className="w-full bg-void/80 backdrop-blur-sm border border-gold-dim/40 focus:border-gold outline-none text-parchment font-heading px-4 py-3 text-sm tracking-wide placeholder:text-parchment/50 transition-colors duration-300"
           />
           <button
@@ -204,7 +209,17 @@ function IWasHere() {
             {submitting ? "..." : "Enter"}
           </button>
         </form>
-          
+          {submitError && (
+  <p className="mt-3 font-heading text-crimson-glow text-lg">
+    {submitError}
+  </p>
+)}
+
+{allNames.length === 0 && (
+  <p className="mt-8 font-heading text-parchment/30 italic text-sm">
+    Be the first to leave your mark...
+  </p>
+)}
         {allNames.length === 0 && (
           <p className="mt-8 font-heading text-parchment/30 italic text-sm">
             Be the first to leave your mark...
