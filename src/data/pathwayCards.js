@@ -1,0 +1,136 @@
+const pathwayCards = [
+  {
+    name: "Fool",
+    image: "/images/pathways/0fool.jpg",
+    upright: "New beginnings, disguise, and hidden potential. A path not yet written.",
+    reversed: "Recklessness, lost identity, wearing too many masks.",
+  },
+  {
+    name: "Magician",
+    image: "/images/pathways/1magician.jpg",
+    upright: "Mastery of knowledge, resourcefulness, turning the unknown into power.",
+    reversed: "Manipulation, misused talent, knowledge without wisdom.",
+  },
+  {
+    name: "Priestess",
+    image: "/images/pathways/2priestess.jpg",
+    upright: "Hidden truths, intuition, secrets kept beneath a calm surface.",
+    reversed: "Withheld knowledge, self-deception, silence that harms.",
+  },
+  {
+    name: "Empress",
+    image: "/images/pathways/3empress.jpg",
+    upright: "Abundance, nurturing power, influence that grows quietly and spreads far.",
+    reversed: "Smothering control, dependency, power turned possessive.",
+  },
+  {
+    name: "Emperor",
+    image: "/images/pathways/4emperor.jpg",
+    upright: "Authority, order, structure built to withstand chaos.",
+    reversed: "Rigidity, tyranny, control that has curdled into oppression.",
+  },
+  {
+    name: "Sailor",
+    image: "/images/pathways/5sailor.jpg",
+    upright: "Wanderers of tides and storms, adaptability, currents that carry you somewhere new.",
+    reversed: "Drifting without direction, being pulled under by forces you can't control.",
+  },
+  {
+    name: "Lovers",
+    image: "/images/pathways/6lovers.jpg",
+    upright: "Bonds forged in trust, difficult choices made from the heart.",
+    reversed: "Broken trust, a choice avoided, connection turned to conflict.",
+  },
+  {
+    name: "Chariot",
+    image: "/images/pathways/7chariot.jpg",
+    upright: "Willpower, forward momentum, victory through sheer determination.",
+    reversed: "Loss of control, a path forced in the wrong direction.",
+  },
+  {
+    name: "Strength",
+    image: "/images/pathways/8strength.jpg",
+    upright: "Quiet resilience, mastering inner turmoil rather than crushing it.",
+    reversed: "Self-doubt, a strength turned inward and against oneself.",
+  },
+  {
+    name: "Hermit",
+    image: "/images/pathways/9hermit.jpg",
+    upright: "Solitary wisdom, stepping back to see what others cannot.",
+    reversed: "Isolation, withdrawal that has become avoidance.",
+  },
+  {
+    name: "Fortune",
+    image: "/images/pathways/10fortune.jpg",
+    upright: "Cycles turning, fate shifting, a wheel that favors the prepared.",
+    reversed: "Bad timing, a cycle repeating painfully, resistance to change.",
+  },
+  {
+    name: "Justice",
+    image: "/images/pathways/11justice.jpg",
+    upright: "Balance, consequence, truth that cannot be avoided forever.",
+    reversed: "Unfairness, avoided accountability, a truth twisted to suit someone's needs.",
+  },
+  {
+    name: "Hangman",
+    image: "/images/pathways/12hangman.jpg",
+    upright: "A necessary pause, seeing things from a new and uncomfortable angle.",
+    reversed: "Stagnation, self-sacrifice made for no real purpose.",
+  },
+  {
+    name: "Death",
+    image: "/images/pathways/13death.jpg",
+    upright: "Transformation, an ending that clears the way for something else entirely.",
+    reversed: "Resistance to change, clinging to what has already ended.",
+  },
+  {
+    name: "Devil",
+    image: "/images/pathways/14devil.jpg",
+    upright: "Temptation, bondage to desire, power gained at a steep hidden cost.",
+    reversed: "Breaking free, reclaiming control from something that once consumed you.",
+  },
+  {
+    name: "Temperance",
+    image: "/images/pathways/15temperance.jpg",
+    upright: "Balance between opposing forces, patience that yields quiet mastery.",
+    reversed: "Excess, imbalance, patience abandoned too soon.",
+  },
+  {
+    name: "Tower",
+    image: "/images/pathways/16tower.jpg",
+    upright: "Sudden upheaval, a structure collapsing to reveal the truth beneath.",
+    reversed: "Disaster narrowly avoided, or delayed only to strike harder later.",
+  },
+  {
+    name: "Star",
+    image: "/images/pathways/17star.jpg",
+    upright: "Hope after darkness, quiet guidance when all else feels lost.",
+    reversed: "Faded hope, disconnection from what once gave you direction.",
+  },
+  {
+    name: "Moon",
+    image: "/images/pathways/18moon.jpg",
+    upright: "Illusion, hidden fears, truths that only surface in the dark.",
+    reversed: "Confusion clearing, a fear finally faced and understood.",
+  },
+  {
+    name: "Sun",
+    image: "/images/pathways/19sun.jpg",
+    upright: "Clarity, vitality, a truth revealed in full light.",
+    reversed: "Delayed joy, a success clouded by doubt.",
+  },
+  {
+    name: "Judgement",
+    image: "/images/pathways/20judgement.jpg",
+    upright: "A reckoning, a calling answered, transformation demanded rather than chosen.",
+    reversed: "Self-doubt, an ignored calling, judgment turned too harshly inward.",
+  },
+  {
+    name: "World",
+    image: "/images/pathways/21world.jpg",
+    upright: "Completion, wholeness, a cycle closing with everything in its place.",
+    reversed: "Incompletion, a chapter that refuses to close.",
+  },
+];
+
+export default pathwayCards;
