@@ -172,7 +172,7 @@ function PathwaysCarousel() {
           - Set a default base width for mobile (w-full max-w-[280px]) 
           - Scaled up the width smoothly for tablet/desktop (sm:max-w-sm md:max-w-md)
         */
-        className="relative h-120 w-full max-w-[280px] sm:max-w-sm md:max-w-md aspect-[2/3] bg-void-card border border-gold overflow-hidden rounded-md shadow-2xl"
+        className="relative h-[480px] md:h-[720px] w-full max-w-[280px] sm:max-w-sm md:max-w-md bg-void-card border border-gold overflow-hidden rounded-md shadow-2xl"
         initial={{ scale: 0.7, opacity: 0, rotate: -4 }}
         animate={{ scale: 1, opacity: 1, rotate: 0 }}
         exit={{ scale: 0.7, opacity: 0, rotate: 4 }}
