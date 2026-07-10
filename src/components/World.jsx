@@ -1,14 +1,17 @@
 import Reveal from "./Reveal";
 import SmokeTrail from "./SmokeTrail";
 import fogImg from "../assets/fogImg.png"
+import useIsMobile from "../hooks/useIsMobile";
 
 function World() {
+   const isMobile = useIsMobile();
+
   return (
     <section
       id="world"
       className="scroll-mt-24 relative bg-void py-32 px-6 overflow-hidden"
     >
-     <SmokeTrail />
+     {!isMobile && <SmokeTrail />}
 
       {/* Decorative fog gradient blobs in background */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-fog/10 rounded-full blur-3xl pointer-events-none" />

@@ -14,11 +14,13 @@ import {
 import AmbientFog from "./AmbientFog";
 import SmokeTrail from "./SmokeTrail";
 import Reveal from "./Reveal";
+import useIsMobile from "../hooks/useIsMobile";
 
 const MAX_VISIBLE = 25; // Max number of unique names allowed on screen at once
 const CYCLE_INTERVAL = 4000; // How often a name swaps out
 
 function IWasHere() {
+  const isMobile = useIsMobile();
   const [nameInput, setNameInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [allNames, setAllNames] = useState([]);
@@ -147,7 +149,7 @@ function IWasHere() {
       id="characters"
       className="relative bg-void py-32 px-6 overflow-hidden scroll-mt-20 min-h-[850px] flex items-center justify-center"
     >
-      <SmokeTrail />
+      {!isMobile && <SmokeTrail />}
       <AmbientFog />
 
       {/* Floating names field */}
