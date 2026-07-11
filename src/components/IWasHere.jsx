@@ -147,10 +147,12 @@ function IWasHere() {
   return (
     <section
       id="characters"
-      className="relative bg-void py-32 px-6 overflow-hidden scroll-mt-20 min-h-[850px] flex items-center justify-center"
+      className={`relative py-32 px-6 overflow-hidden scroll-mt-20 min-h-[850px] flex items-center justify-center ${
+        isMobile ? "bg-fog/20" : "bg-void"
+      }`}
     >
       {!isMobile && <SmokeTrail />}
-      <AmbientFog />
+      {!isMobile && <AmbientFog />}
 
       {/* Floating names field */}
       <div className="absolute inset-0 z-10">
