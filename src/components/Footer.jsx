@@ -78,7 +78,7 @@ function Footer() {
         className="opacity-40 hover:opacity-100 transition-opacity duration-300"
         aria-label="Facebook"
       >
-        <img src="/images/icons/facebook.svg" alt="Facebook" className="w-10 h-10 sm:w-5 sm:h-5" />
+        <img src="/images/icons/facebook.svg" alt="Facebook" className="w-10 h-10 sm:w-5 sm:h-5" loading="lazy"/>
       </a>
       <a
         href="https://www.linkedin.com/in/lance-christian-crucis-317144351/"
@@ -87,21 +87,21 @@ function Footer() {
         className="opacity-40 hover:opacity-100 transition-opacity duration-300"
         aria-label="LinkedIn"
       >
-        <img src="/images/icons/linkedin.svg" alt="LinkedIn" className="w-10 h-10 sm:w-5 sm:h-5" />
+        <img src="/images/icons/linkedin.svg" alt="LinkedIn" className="w-10 h-10 sm:w-5 sm:h-5" loading="lazy"/>
       </a>
       <a
         href="https://www.tiktok.com/@lancecrucis"
         className="opacity-40 hover:opacity-100 transition-opacity duration-300"
         aria-label="Tiktok"
       >
-        <img src="/images/icons/tiktok.svg" alt="Tiktok" className="w-10 h-10 sm:w-5 sm:h-5" />
+        <img src="/images/icons/tiktok.svg" alt="Tiktok" className="w-10 h-10 sm:w-5 sm:h-5" loading="lazy" />
       </a>
       <a
         href="mailto:lancecrucis123@gmail.com"
         className="opacity-40 hover:opacity-100 transition-opacity duration-300"
         aria-label="Email"
       >
-        <img src="/images/icons/gmail.svg" alt="Email" className="w-10 h-10 sm:w-5 sm:h-5" />
+        <img src="/images/icons/gmail.svg" alt="Email" className="w-10 h-10 sm:w-5 sm:h-5" loading="lazy"/>
       </a>
     </div>
   </div>

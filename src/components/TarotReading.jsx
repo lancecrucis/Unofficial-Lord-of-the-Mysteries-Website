@@ -231,6 +231,7 @@ function RevealedCard({ card, label, isFlipped }) {
               className="absolute inset-0 w-full h-full object-cover"
               style={{ transform: card.isReversed ? "rotate(180deg)" : "none" }}
               draggable={false}
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent" />
             <h3 className="absolute bottom-3 left-0 right-0 text-center font-display text-gold text-sm sm:text-base tracking-wide">

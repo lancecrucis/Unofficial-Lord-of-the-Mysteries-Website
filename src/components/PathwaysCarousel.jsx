@@ -121,6 +121,7 @@ function PathwaysCarousel() {
                   alt={p.name}
                   className="absolute inset-0 w-full h-full object-cover"
                   draggable={false}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent" />
                 <h3 className="absolute bottom-3 left-0 right-0 text-center font-display text-gold text-base tracking-wide">
