@@ -16,11 +16,13 @@ import SmokeTrail from "./SmokeTrail";
 import Reveal from "./Reveal";
 import useIsMobile from "../hooks/useIsMobile";
 
-const MAX_VISIBLE = 25; // Max number of unique names allowed on screen at once
+
 const CYCLE_INTERVAL = 4000; // How often a name swaps out
 
 function IWasHere() {
   const isMobile = useIsMobile();
+  
+const MAX_VISIBLE = isMobile ? 8 : 25; ;
   const [nameInput, setNameInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [allNames, setAllNames] = useState([]);
