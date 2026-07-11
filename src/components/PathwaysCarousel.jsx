@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "./Reveal";
+import useIsMobile from "../hooks/useIsMobile";
 
 const pathways = [
   { name: "Fool", image: "/images/pathways/0fool.jpg", desc: "A pathway of masks and misdirection, where deception becomes a shield against a world too vast to face honestly." },
@@ -69,6 +70,8 @@ function PathwaysCarousel() {
 
   const activePathway = pathways[activeIndex];
 
+  const isMobile = useIsMobile();
+
   return (
     <Reveal>
     <div className="relative h-[420px] flex items-center justify-center select-none">
@@ -100,8 +103,12 @@ function PathwaysCarousel() {
                 scale: isActive ? 1.05 : 0.95,
                 opacity: 1,
               }}
-              transition={{ type: "spring", stiffness: 220, damping: 24 }}
-              whileHover={isActive ? { scale: 1.1 } : {}}
+              transition={
+              isMobile
+                ? { duration: 0.3, ease: "easeOut" }
+                : { type: "spring", stiffness: 260, damping: 26 }
+              }
+              whileHover={!isMobile && isActive ? { scale: 1.1 } : {}}
               onClick={() => handleCardClick(i, isActive)}
             >
               <div
