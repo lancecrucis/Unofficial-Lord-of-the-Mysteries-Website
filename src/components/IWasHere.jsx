@@ -22,7 +22,7 @@ const CYCLE_INTERVAL = 4000; // How often a name swaps out
 function IWasHere() {
   const isMobile = useIsMobile();
   
-const MAX_VISIBLE = isMobile ? 8 : 25; ;
+const MAX_VISIBLE = isMobile ? 5 : 25; ;
   const [nameInput, setNameInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [allNames, setAllNames] = useState([]);
