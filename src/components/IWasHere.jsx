@@ -8,7 +8,7 @@ import {
   query,
   orderBy,
   limit,
-  onSnapshot,
+  getDocs,
   serverTimestamp,
 } from "firebase/firestore";
 import AmbientFog from "./AmbientFog";
@@ -31,17 +31,21 @@ const MAX_VISIBLE = isMobile ? 5 : 25; ;
   const [floatingNames, setFloatingNames] = useState([]);
   const slotIdRef = useRef(0);
 
-  // 1. Fetch names from Firestore
+// 1. Fetch names from Firestore (one-time fetch, not a live listener)
   useEffect(() => {
-    const q = query(collection(db, "visitors"), orderBy("timestamp", "desc"), limit(200));
-    const unsub = onSnapshot(q, (snapshot) => {
-      // Use Set to strictly ensure the source data has no duplicates
-      const uniqueNames = Array.from(
-        new Set(snapshot.docs.map((doc) => doc.data().name).filter(Boolean))
-      );
-      setAllNames(uniqueNames);
-    });
-    return () => unsub();
+    async function fetchNames() {
+      try {
+        const q = query(collection(db, "visitors"), orderBy("timestamp", "desc"), limit(50));
+        const snapshot = await getDocs(q);
+        const uniqueNames = Array.from(
+          new Set(snapshot.docs.map((doc) => doc.data().name).filter(Boolean))
+        );
+        setAllNames(uniqueNames);
+      } catch (err) {
+        console.error("Failed to fetch names:", err);
+      }
+    }
+    fetchNames();
   }, []);
 
   // Helper to generate a new floating name object with random positions
@@ -221,11 +225,6 @@ const MAX_VISIBLE = isMobile ? 5 : 25; ;
   </p>
 )}
 
-{allNames.length === 0 && (
-  <p className="mt-8 font-heading text-parchment/30 italic text-sm">
-    Be the first to leave your mark...
-  </p>
-)}
         {allNames.length === 0 && (
           <p className="mt-8 font-heading text-parchment/30 italic text-sm">
             Be the first to leave your mark...
