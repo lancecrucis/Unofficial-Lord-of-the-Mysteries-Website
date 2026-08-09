@@ -42,7 +42,7 @@ function CharacterCard({ char }) {
         FILE NO. {char.name.length.toString().padStart(3, "0")}
       </p>
 
-      <h3 className="font-display text-gold text-2xl mb-1">{char.name}</h3>
+      <h3 className="font-california text-gold text-2xl mb-1">{char.name}</h3>
       <p className="font-heading italic text-parchment/50 text-sm mb-4">
         also known as {char.alias}
       </p>

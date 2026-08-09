@@ -51,9 +51,15 @@ function TarotReading() {
   }
 
   return (
-    <section id="factions" className="relative bg-void-light py-23 px-6 scroll-mt-18">
+    <section id="factions" className="relative bg-midnight/70 py-35 px-6 scroll-mt-18 overflow-hidden">
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center pointer-events-none"
+        style={{ backgroundImage: "url('/drawyourfatebg.png')" }}
+      />
+      <div className="absolute inset-0 bg-midnight/50 pointer-events-none" />
         
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="relative max-w-6xl mx-auto text-center">
         <Reveal>
         <p className="font-heading italic text-gold tracking-[0.3em] text-base uppercase mb-4">
           Do you believe in fate?
@@ -96,10 +102,13 @@ function TarotReading() {
                 isPicked ? "opacity-30 scale-95 pointer-events-none" : ""
               }`}
             >
-              <div className="w-full h-full bg-void-card border border-gold-dim/60 rounded-md shadow-lg flex items-center justify-center">
-                <div className="w-3/4 h-3/4 border border-gold-dim/40 rounded-sm flex items-center justify-center">
-                  <span className="font-display text-gold-dim text-lg">✦</span>
-                </div>
+              <div className="w-full h-full border border-gold-dim/60 rounded-md shadow-lg overflow-hidden">
+                <img
+                  src="/cardback.png"
+                  alt="Card back"
+                  className="w-full h-full object-cover"
+                  draggable={false}
+                />
               </div>
               {isPicked && (
                 <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-gold text-void text-[10px] font-heading flex items-center justify-center z-10">
@@ -151,10 +160,13 @@ function TarotReading() {
                   isPicked ? "opacity-100 pointer-events-none" : ""
                 }`}
               >
-                <div className="w-full h-full bg-void-card border border-gold-dim/60 rounded-md shadow-lg flex items-center justify-center">
-                  <div className="w-3/4 h-3/4 border border-gold-dim/40 rounded-sm flex items-center justify-center">
-                    <span className="font-display text-gold-dim text-lg sm:text-xl">✦</span>
-                  </div>
+                <div className="w-full h-full border border-gold-dim/60 rounded-md shadow-lg overflow-hidden">
+                  <img
+                    src="/cardback.png"
+                    alt="Card back"
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                  />
                 </div>
                 {isPicked && (
                   <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gold text-void text-xs font-heading flex items-center justify-center z-10">
@@ -217,14 +229,17 @@ function RevealedCard({ card, label, isFlipped }) {
           }`}
         >
           {/* Card back */}
-          <div className="absolute inset-0 [backface-visibility:hidden] bg-void-card border-2 border-gold-dim rounded-sm flex items-center justify-center">
-            <div className="w-3/4 h-3/4 border border-gold-dim/50 rounded-sm flex items-center justify-center">
-              <span className="font-display text-gold-dim text-3xl">✦</span>
-            </div>
+          <div className="absolute inset-0 [backface-visibility:hidden] border-2 border-gold-dim rounded-sm overflow-hidden">
+            <img
+              src="/cardback.png"
+              alt="Card back"
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
           </div>
 
           {/* Card front */}
-          <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-void-card border-2 border-gold  overflow-hidden">
+          <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-void-card border-1 border-gold  overflow-hidden">
             <img
               src={card.image}
               alt={card.name}
@@ -234,7 +249,7 @@ function RevealedCard({ card, label, isFlipped }) {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent" />
-            <h3 className="absolute bottom-3 left-0 right-0 text-center font-display text-gold text-sm sm:text-base tracking-wide">
+            <h3 className="absolute bottom-3 left-0 right-0 text-center font-heading text-gold text-sm sm:text-base tracking-wide">
               The {card.name}
             </h3>
           </div>

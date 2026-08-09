@@ -8,28 +8,23 @@ function Hero() {
       />
 
       {/* Vignette overlay so text stays readable over the 3D scene */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-void/70 via-transparent to-void" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-void/40 via-transparent to-void/40" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-void/80 via-void/20 to-void/90" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-void/50 via-transparent to-void/50" />
 
       {/* Hero content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 pointer-events-none">
-        <p className="font-heading italic text-gold-light/80 tracking-[0.3em] text-sm md:text-base mb-4 uppercase">
+        <p className="font-heading italic text-gold-light/60 tracking-[0.3em] text-sm md:text-base mb-4 uppercase font-semibold">
           Beyond the Fog
         </p>
 
-        <h1 className="font-display text-gold text-4xl md:text-6xl lg:text-7xl tracking-wide drop-shadow-[0_0_25px_rgba(184,149,47,0.3)]">
-          Lord of the Mysteries
+        <h1 className="font-california text-gold/80 font-thin text-4xl md:text-[5.5rem] lg:text-8xl tracking-wider drop-shadow-[0_0_25px_rgba(184,149,47,0.3)] relative overflow-hidden">
+          <span className="relative z-10">Lord of the Mysteries</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-light/60 to-transparent animate-shine" />
         </h1>
 
         <p className="font-heading text-parchment/70 text-lg md:text-xl mt-6 max-w-xl italic">
-          "In the name of the Lord, let us pray for the fog to disperse..."
+          "In the name of the Lord, let us pray for the fog to disperse."
         </p>
-
-        {/* Scroll cue */}
-        <div className="absolute bottom-10 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-gold-dim text-lg tracking-[0.2em] uppercase font-heading">Descend</span>
-          <div className="w-px h-10 bg-gradient-to-b from-gold-dim to-transparent" />
-        </div>
       </div>
     </section>
   );

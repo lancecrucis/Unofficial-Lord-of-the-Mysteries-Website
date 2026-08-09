@@ -54,7 +54,7 @@ function Factions() {
 
               {/* Name + type */}
               <div className="sm:w-64 shrink-0">
-                <h3 className="font-display text-gold text-xl">{f.name}</h3>
+                <h3 className="font-california text-gold text-xl">{f.name}</h3>
                 <p className="font-heading text-crimson-glow text-xs tracking-[0.2em] uppercase mt-1">
                   {f.type}
                 </p>

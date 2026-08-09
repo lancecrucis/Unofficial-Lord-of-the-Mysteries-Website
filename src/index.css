@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'California Sun';
+  src: url('/fonts/California sun.woff2') format('woff2'),
+       url('/fonts/California sun.woff') format('woff'),
+       url('/fonts/California sun.ttf') format('truetype'),
+       url('/fonts/California sun.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-void: #0a0a0d;
   --color-void-light: #14141a;
@@ -18,9 +29,39 @@
 
   --color-parchment: #e8dfc8;
 
+  --color-midnight: #0e1018;
+  --color-altar: #13110f;
+
   --font-display: "Cinzel Decorative", serif;
   --font-heading: "Cormorant Garamond", serif;
   --font-body: "EB Garamond", serif;
+  --font-california: "California Sun", serif;
+
+  --animate-shine: shine 5s ease-in-out infinite;
+  --animate-shine-text: shine-text 3s ease-in-out infinite;
+  --animate-shine-fog: shine-fog 3s ease-in-out infinite;
+  --animate-breathe: breathe 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes shine-text {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes shine-fog {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
 body, html, #root {
@@ -35,26 +76,23 @@ body {
   overflow-x: hidden;
 }
 
-::selection {
-  background-color: var(--color-crimson);
-  color: var(--color-gold-light);
+html {
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-void);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-crimson);
   border-radius: 4px;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-crimson-bright);
 }

@@ -3,12 +3,12 @@ import Reveal from "./Reveal";
 import PathwaysCarousel from "./PathwaysCarousel";
 
 const pathways = [
-  { name: "Fool", symbol: "🃏", desc: "Masters of disguise and misdirection, wielding countless faces.", color: "from-crimson/40" },
-  { name: "Door", symbol: "🚪", desc: "Keepers of thresholds between worlds, seers of what lies beyond.", color: "from-fog/40" },
-  { name: "Sailor", symbol: "⚓", desc: "Wanderers of tides and storms, bound to the endless sea.", color: "from-gold-dim/40" },
-  { name: "Visionary", symbol: "👁", desc: "Seers of fate's threads, glimpsing futures yet unwritten.", color: "from-crimson/40" },
-  { name: "Warrior", symbol: "⚔", desc: "Bearers of martial fury, strength that shatters mountains.", color: "from-gold-dim/40" },
-  { name: "Demoness", symbol: "🕸", desc: "Weavers of temptation and ruin, beauty laced with venom.", color: "from-fog/40" },
+  { name: "Fool", symbol: ".", desc: "Masters of disguise and misdirection, wielding countless faces.", color: "from-crimson/40" },
+  { name: "Door", symbol: ".", desc: "Keepers of thresholds between worlds, seers of what lies beyond.", color: "from-fog/40" },
+  { name: "Sailor", symbol: ".", desc: "Wanderers of tides and storms, bound to the endless sea.", color: "from-gold-dim/40" },
+  { name: "Visionary", symbol: ".", desc: "Seers of fate's threads, glimpsing futures yet unwritten.", color: "from-crimson/40" },
+  { name: "Warrior", symbol: ".", desc: "Bearers of martial fury, strength that shatters mountains.", color: "from-gold-dim/40" },
+  { name: "Demoness", symbol: ".", desc: "Weavers of temptation and ruin, beauty laced with venom.", color: "from-fog/40" },
 ];
 
 function PathwayCard({ pathway }) {
@@ -52,7 +52,7 @@ function PathwayCard({ pathway }) {
 function Pathways() {
   return (
     <Reveal>
-    <section id="pathways" className="relative bg-void-light py-28 px-6">
+    <section id="pathways" className="relative bg-midnight py-28 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="font-heading italic text-gold tracking-[0.3em] text-base uppercase mb-4">

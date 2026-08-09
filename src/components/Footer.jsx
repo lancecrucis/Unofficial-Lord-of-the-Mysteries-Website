@@ -11,17 +11,12 @@ function Footer() {
     
     <footer className="relative bg-void border-t border-gold-dim/20 py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Ornate divider */}
-        <div className="flex items-center justify-center gap-4 mb-12">
-          <div className="w-44 h-px bg-gold-dim/50" />
-          <span className="text-gold text-xl">✦</span>
-          <div className="w-44 h-px bg-gold-dim/50" />
-        </div>
+      
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-16">
           {/* Column 1: Brand */}
           <div>
-            <h3 className="font-display text-gold text-xl mb-3">LOTM</h3>
+            <h3 className="font-heading text-gold text-xl mb-3">LOTM</h3>
             <p className="font-heading text-parchment/70 text-sm leading-relaxed">
               A fan tribute to the world of Lord of the Mysteries — where fog
               conceals both salvation and ruin.

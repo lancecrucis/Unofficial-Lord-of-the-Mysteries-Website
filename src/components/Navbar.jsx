@@ -35,7 +35,7 @@ function Navbar() {
               <img 
                 src={navLogo} 
                 alt="Logo" 
-                className="w-12 h-12 object-contain" // Limits the image size so it sits nicely inside the circle
+                className="w-12 h-12 object-contain"
                 />
             </div>
             <span className="font-heading text-parchment text-lg tracking-[0.15em] hidden sm:block">
@@ -58,9 +58,10 @@ function Navbar() {
 
           <a
             href="#characters"
-            className="hidden md:block font-heading text-xs tracking-[0.2em] uppercase text-gold border border-gold-dim px-5 py-2 hover:bg-gold-dim/10 hover:border-gold transition-all duration-300"
+            className="hidden md:block font-heading text-xs tracking-[0.2em] uppercase text-gold-light font-normal border border-gold-dim px-6 py-3 hover:bg-gold-dim/10 hover:border-gold transition-all duration-300 relative overflow-hidden group"
           >
-            Enter the Fog
+            <span className="relative z-10">Enter the Fog</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-light/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
           </a>
 
           <button
@@ -91,9 +92,10 @@ function Navbar() {
         <a
           href="#characters"
           onClick={() => setMenuOpen(false)}
-          className="font-heading text-xs tracking-[0.2em] uppercase text-gold border border-gold-dim px-6 py-3 mt-4 hover:bg-gold-dim/10 transition-all duration-300"
+          className="font-heading text-xs tracking-[0.2em] uppercase text-gold border border-gold-dim px-6 py-3 mt-4 hover:bg-gold-dim/10 transition-all duration-300 relative overflow-hidden group"
         >
-          Enter the Fog
+          <span className="relative z-10">Enter the Fog</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-light/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
         </a>
       </div>
     </>
