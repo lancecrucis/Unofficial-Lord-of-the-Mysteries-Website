@@ -96,3 +96,19 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-crimson-bright);
 }
+
+/* Smaller scrollbar for mobile tarot cards */
+@media (max-width: 768px) {
+  .scrollbar-hide::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar-thumb {
+    background: var(--color-gold-dim);
+    border-radius: 2px;
+  }
+}

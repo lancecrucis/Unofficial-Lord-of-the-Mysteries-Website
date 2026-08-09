@@ -34,6 +34,7 @@ function PathwaysCarousel() {
   const [expanded, setExpanded] = useState(false);
   const total = pathways.length;
   const wheelLock = useRef(false);
+  const isMobile = useIsMobile();
 
   function goTo(index) {
     setActiveIndex(((index % total) + total) % total);
@@ -73,18 +74,17 @@ function PathwaysCarousel() {
   }
 
   const activePathway = pathways[activeIndex];
-  const isMobile = useIsMobile();
 
   return (
     <Reveal>
-    <div className="relative h-[420px] flex items-center justify-center select-none">
+    <div className={`${isMobile ? 'h-[380px]' : 'h-[420px]'} relative flex items-center justify-center select-none`}>
       <motion.div
         className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.15}
         onDragEnd={handleDragEnd}
-        onWheel={handleWheel}
+        onWheel={!isMobile ? handleWheel : undefined}
       >
         {pathways.map((p, i) => {
           const offset = getOffset(i);
@@ -97,7 +97,7 @@ function PathwaysCarousel() {
           return (
             <motion.div
               key={p.name}
-              className="absolute w-40 h-56 sm:w-48 sm:h-64"
+              className={`absolute ${isMobile ? 'w-28 h-40' : 'w-40 h-56 sm:w-48 sm:h-64'}`}
               style={{ zIndex: 10 - Math.abs(offset) }}
               animate={{
                 x: slot.x,
@@ -107,17 +107,19 @@ function PathwaysCarousel() {
                 opacity: 1,
               }}
               transition={
-              isMobile
-                ? { duration: 0.3, ease: "easeOut" }
-                : { type: "spring", stiffness: 200, damping: 25 }
+                isMobile
+                  ? { duration: 0.3, ease: "easeOut" }
+                  : { type: "spring", stiffness: 200, damping: 25 }
               }
               whileHover={!isMobile && isActive ? { scale: 1.12 } : {}}
               onClick={() => handleCardClick(i, isActive)}
             >
               <div
-                className={`w-full h-75 border overflow-hidden relative bg-void-card transition-all duration-500 cursor-pointer ${
+                className={`w-full h-full border overflow-hidden relative bg-void-card transition-all duration-500 cursor-pointer ${
                   isActive 
-                    ? "border-gold shadow-[0_0_40px_rgba(184,149,47,0.35),0_0_80px_rgba(184,149,47,0.15)]" 
+                    ? isMobile
+                      ? "border-gold shadow-[0_0_25px_rgba(184,149,47,0.3)]"
+                      : "border-gold shadow-[0_0_40px_rgba(184,149,47,0.35),0_0_80px_rgba(184,149,47,0.15)]"
                     : "border-gold-dim/30 hover:border-gold-dim/60"
                 }`}
               >
@@ -131,7 +133,7 @@ function PathwaysCarousel() {
                 <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-b from-void/20 via-transparent to-transparent" />
                 
-                <h3 className="absolute bottom-3 left-0 right-0 text-center font-heading text-gold text-base tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                <h3 className={`absolute bottom-2 left-0 right-0 text-center font-heading text-gold tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] ${isMobile ? 'text-xs' : 'text-base'}`}>
                   The {p.name}
                 </h3>
               </div>
@@ -140,22 +142,24 @@ function PathwaysCarousel() {
         })}
       </motion.div>
 
+      {/* Navigation Buttons */}
       <button
         onClick={() => goTo(activeIndex - 1)}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gold hover:text-gold bg-void/50 rounded-full border border-gold/30 hover:border-gold/50 text-2xl sm:text-3xl z-30 transition-all duration-300"
+        className={`absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 flex items-center justify-center text-gold hover:text-gold bg-void/50 rounded-full border border-gold/30 hover:border-gold/50 z-30 transition-all duration-300 ${isMobile ? 'w-8 h-8 text-xl' : 'w-10 h-10 sm:w-12 sm:h-12 text-2xl sm:text-3xl'}`}
         aria-label="Previous pathway"
       >
         ‹
       </button>
       <button
         onClick={() => goTo(activeIndex + 1)}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-gold hover:text-gold bg-void/50 rounded-full border border-gold/30 hover:border-gold/50 text-2xl sm:text-3xl z-30 transition-all duration-300"
+        className={`absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 flex items-center justify-center text-gold hover:text-gold bg-void/50 rounded-full border border-gold/30 hover:border-gold/50 z-30 transition-all duration-300 ${isMobile ? 'w-8 h-8 text-xl' : 'w-10 h-10 sm:w-12 sm:h-12 text-2xl sm:text-3xl'}`}
         aria-label="Next pathway"
       >
         ›
       </button>
 
-      <div className="absolute -bottom-4 left-0 right-0 text-center px-6">
+      {/* Description below cards */}
+      <div className={`${isMobile ? 'mt-12' : '-bottom-4'} absolute left-0 right-0 text-center px-6`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={activePathway.name}
@@ -165,20 +169,21 @@ function PathwaysCarousel() {
             transition={{ duration: 0.3 }}
             className="flex flex-col items-center gap-2"
           >
-            <h3 className="font-display text-gold text-lg tracking-wide drop-shadow-[0_2px_8px_rgba(184,149,47,0.3)]">
+            <h3 className={`font-display text-gold tracking-wide drop-shadow-[0_2px_8px_rgba(184,149,47,0.3)] ${isMobile ? 'text-sm' : 'text-lg'}`}>
               The {activePathway.name}
             </h3>
-            <p className="font-heading text-parchment/70 text-base max-w-md mx-auto">
+            <p className={`font-heading text-parchment/70 max-w-md mx-auto ${isMobile ? 'text-xs' : 'text-base'}`}>
               {activePathway.desc}
             </p>
           </motion.div>
         </AnimatePresence>
       </div>
 
+      {/* Expanded Card Modal */}
       <AnimatePresence>
         {expanded && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-void/90 backdrop-blur-sm px-4 sm:px-6"
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-void/90 px-4 sm:px-6 ${isMobile ? '' : 'backdrop-blur-sm'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -186,7 +191,7 @@ function PathwaysCarousel() {
             onClick={() => setExpanded(false)}
           >
             <motion.div
-              className="relative h-[480px] md:h-[720px] w-full max-w-[280px] sm:max-w-sm md:max-w-md bg-void-card border border-gold overflow-hidden rounded-md shadow-[0_0_60px_rgba(184,149,47,0.2)]"
+              className={`relative w-full max-w-[280px] sm:max-w-sm md:max-w-md bg-void-card border border-gold overflow-hidden rounded-md shadow-[0_0_60px_rgba(184,149,47,0.2)] ${isMobile ? 'h-[400px]' : 'h-[480px] md:h-[720px]'}`}
               initial={{ scale: 0.7, opacity: 0, rotate: -4 }}
               animate={{ scale: 1, opacity: 1, rotate: 0 }}
               exit={{ scale: 0.7, opacity: 0, rotate: 4 }}
@@ -198,7 +203,6 @@ function PathwaysCarousel() {
                 alt={activePathway.name}
                 className="w-full h-full object-cover"
               />
-
               <button
                 onClick={() => setExpanded(false)}
                 className="absolute top-3 right-3 text-gold hover:text-gold-light text-sm bg-void/70 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 border border-gold/60"
