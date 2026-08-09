@@ -52,8 +52,19 @@ function PathwayCard({ pathway }) {
 function Pathways() {
   return (
     <Reveal>
-    <section id="pathways" className="relative bg-midnight py-26 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="pathways" className="relative bg-midnight py-26 px-6 overflow-hidden">
+      {/* Top fade from World section */}
+      <div className="absolute top-0 left-0 right-0 h-22 bg-gradient-to-b from-void to-transparent pointer-events-none z-10" />
+      
+      {/* Background image - centered mat */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-80"
+        style={{ backgroundImage: "url('/pathwaysbg.png')" }}
+      />
+      {/* Red maroon overlay for the mat effect */}
+      <div className="absolute inset-0 bg-crimson/20 pointer-events-none" />
+      
+      <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="font-heading italic text-gold tracking-[0.3em] text-base uppercase mb-4">
             Choose Your Fate
@@ -65,6 +76,10 @@ function Pathways() {
 
          <PathwaysCarousel />
       </div>
+      
+      {/* Bottom fade to I Was Here section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-void pointer-events-none z-20" />
+      
     </section>
     </Reveal>
   );

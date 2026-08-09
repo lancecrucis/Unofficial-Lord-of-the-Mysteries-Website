@@ -11,6 +11,9 @@ function World() {
       id="world"
       className="scroll-mt-24 relative bg-void py-32 px-6 overflow-hidden"
     >
+     {/* Top fade from Hero section */}
+     <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-void to-transparent pointer-events-none z-10" />
+     
      {!isMobile && <SmokeTrail />}
 
       {/* Decorative fog gradient blobs in background */}
@@ -68,6 +71,9 @@ function World() {
         </div>
       </div>
       </Reveal>
+      
+      {/* Bottom fade to I Was Here section */}
+      <div className="absolute bottom-0 left-0 right-0 h-23 bg-gradient-to-b from-transparent to-void pointer-events-none z-20" />
     </section>
   );
 }

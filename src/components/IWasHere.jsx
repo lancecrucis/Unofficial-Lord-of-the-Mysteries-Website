@@ -157,6 +157,9 @@ const MAX_VISIBLE = isMobile ? 5 : 25; ;
         isMobile ? "bg-fog/20" : "bg-void"
       }`}
     >
+      {/* Top fade from World section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-void to-transparent pointer-events-none z-10" />
+      
       {!isMobile && <SmokeTrail />}
       {!isMobile && <AmbientFog />}
 
@@ -231,6 +234,8 @@ const MAX_VISIBLE = isMobile ? 5 : 25; ;
           </p>
         )}
       </div>
+      {/* Bottom fade to I Was Here section */}
+      <div className="absolute bottom-0 left-0 right-0 h-19 bg-gradient-to-b from-transparent to-void pointer-events-none z-20" />
       </Reveal>
     </section>
   );

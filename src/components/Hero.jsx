@@ -23,6 +23,9 @@ function Hero() {
       {/* Vignette overlay so text stays readable over the background */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-void/80 via-void/20 to-void/90" />
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-void/50 via-transparent to-void/50" />
+      
+      {/* Bottom fade to World section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-void pointer-events-none z-20" />
 
       {/* Hero content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 pointer-events-none">

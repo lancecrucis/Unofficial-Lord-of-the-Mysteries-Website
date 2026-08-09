@@ -52,6 +52,9 @@ function TarotReading() {
 
   return (
     <section id="factions" className="relative bg-midnight/70 py-35 px-6 scroll-mt-18 overflow-hidden">
+      {/* Top fade from I Was Here section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-void to-transparent pointer-events-none z-10" />
+      
       {/* Background image */}
       <div 
         className="absolute inset-0 bg-cover bg-center pointer-events-none"
@@ -205,6 +208,9 @@ function TarotReading() {
           </div>
         )}
       </div>
+      
+      {/* Bottom fade to Footer section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-void pointer-events-none z-20" />
     </section>
   );
 }
