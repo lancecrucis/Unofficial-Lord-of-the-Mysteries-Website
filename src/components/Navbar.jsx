@@ -29,15 +29,51 @@ function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-14 h-14 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full border-2 border-gold-dim group-hover:border-gold transition-colors duration-300" />
+            
+              <div className="relative w-14 h-14 rounded-full overflow-hidden group border-2 border-gold-dim">
+              <img
+                src={navLogo}
+                alt="Logo"
+                className="w-full h-full object-contain"
+              />
+
+              <span className="
+                absolute inset-0
+                bg-gradient-to-r
+                from-transparent
+                via-gold-light/40
+                to-transparent
+                -translate-x-full
+                group-hover:translate-x-full
+                transition-transform duration-700
+                skew-x-[-20deg]
+              " />
+            </div>
+
+              {/*
+              <div className="relative w-14 h-14 flex items-center justify-center">
+
+              <div className="relative  w-12 h-12 rounded-full overflow-hidden group border-2 border-gold-dim" />
 
               <img 
                 src={navLogo} 
                 alt="Logo" 
                 className="w-12 h-12 object-contain"
                 />
+                <span className="
+                 absolute inset-0
+                  bg-gradient-to-r
+                  from-transparent
+                  via-gold-light/40
+                  to-transparent
+                  -translate-x-full
+                  group-hover:translate-x-full
+                  transition-transform duration-700
+                  skew-x-[-20deg]
+                " />
             </div>
+*/}
+
             <span className="font-heading text-parchment text-lg tracking-[0.15em] hidden sm:block">
               LOTM
             </span>

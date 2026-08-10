@@ -64,6 +64,19 @@ function Pathways() {
       {/* Red maroon overlay for the mat effect */}
       <div className="absolute inset-0 bg-crimson/20 pointer-events-none" />
       
+      {/* Loenlang image - top right */}
+      <div 
+        className="absolute top-10 right-0
+    sm:top-5
+    sm:w-[28vw] sm:h-[15vw]
+    lg:right-10 lg:w-[28vw] lg:h-[15vw]
+    bg-contain bg-center bg-no-repeat
+    opacity-50 lg:opacity-70
+        "
+        style={{ backgroundImage: "url('/loenlang.png')" }}
+      />
+      
+      
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="font-heading italic text-gold tracking-[0.3em] text-base uppercase mb-4">

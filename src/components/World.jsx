@@ -16,6 +16,20 @@ function World() {
      
      {!isMobile && <SmokeTrail />}
 
+      {/* Background image on far right - behind text */}
+      <div 
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-200 bg-cover bg-center bg-no-repeat pointer-events-none opacity-30"
+        style={{ backgroundImage: "url('/behindtextbg.webp')" }}
+      />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-200 bg-gradient-to-l from-transparent to-void pointer-events-none" />
+      
+      {/* Background image on far left - behind text */}
+      <div 
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-200 bg-cover bg-center bg-no-repeat pointer-events-none opacity-30"
+        style={{ backgroundImage: "url('/behindtextleft.webp')" }}
+      />
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-200 bg-gradient-to-r from-transparent to-void pointer-events-none" />
+      
       {/* Decorative fog gradient blobs in background */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-fog/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-fog/15 rounded-full blur-3xl pointer-events-none" />
