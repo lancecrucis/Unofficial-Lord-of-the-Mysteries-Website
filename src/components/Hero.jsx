@@ -15,9 +15,9 @@ function Hero() {
         />
       ) : (
         <spline-viewer
-          url="https://prod.spline.design/BSDrRBYEFPmzQ5qL/scene.splinecode"
-          className="absolute inset-0 w-full h-full"
-        />
+        url="https://prod.spline.design/BSDrRBYEFPmzQ5qL/scene.splinecode?v=2"
+        className="absolute inset-0 w-full h-full"
+/>
       )}
 
       {/* Vignette overlay so text stays readable over the background */}
